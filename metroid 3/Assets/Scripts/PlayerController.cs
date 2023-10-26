@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
         //if the player is pressing A
         if (Input.GetKey(KeyCode.A))
         {
+            PlayerRotation();
+
             //the player moves left
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
@@ -64,4 +66,20 @@ public class PlayerController : MonoBehaviour
             Debug.Log("The player is in the air and may not jump.");
         }
     }
+
+    private void PlayerRotation()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.RotateAround(transform.position, transform.up, 180f);
+        }
+    }
+
+    /*private void FacingRight()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+
+        }
+    }*/
 }
