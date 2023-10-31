@@ -22,7 +22,16 @@ public class LaserSpwaner : MonoBehaviour
     }
 
 
-    public void ShootLaser()
+
+
+            if (Input.GetKey(KeyCode.Return))
+        {
+            ShootLaser();
+    //InvokeRepeating("ShootLaser", 0, spawnRate);
+
+
+}
+public void ShootLaser()
     {
         GameObject laserInstance = Instantiate(laserPrefab, transform.position, transform.rotation);
         laserInstance.GetComponent<laser>().goingLeft = shootLeft;
