@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - laser
+  - Regular Enemy
+  - RegularEnemy
+  - HardEnemy
   layers:
   - Default
   - TransparentFX

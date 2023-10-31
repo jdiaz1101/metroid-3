@@ -72,7 +72,7 @@ public class RegularEnemy : MonoBehaviour
     /// </summary>
     private void EnemyDeath()
     {
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(this.gameObject);
         }
