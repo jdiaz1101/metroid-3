@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
  * Author(s): [Strong, Hannah]
- * Date Last Modified: [10/26/2023]
+ * Date Last Modified: [10/31/2023]
  * Codes for player movement 
  */
 
@@ -18,6 +19,12 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10f;
 
     public bool facingRight;
+
+    public float health = 99f;
+    public float regEnemyDamage = 15f;
+    public float hardEnemyDamage = 35f;
+
+    public bool invincible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +56,52 @@ public class PlayerController : MonoBehaviour
         {
             HandleJump();
         }
+        GameOver();
+    }
+
+    /// <summary>
+    /// codes for the scene transition when the player is out of health
+    /// </summary>
+    private void GameOver()
+    {
+        if (health <= 0)
+        {
+            SceneManager.LoadScene(1);
+            Debug.Log("Game over");
+        }
+    }
+
+    //codes for what happens when the player interacts with certian game objects
+    //for the not taking damage for 5 seconds maybe do ienumerator thats like 
+    //while XXX is happening, dont take damage
+    //like the (!waiting) from before?
+    private void OnTriggerEnter(Collider other)
+    {
+        //if you are not invincible
+        if (!invincible)
+        {
+            if (other.gameObject.tag == "RegularEnemy")
+            {
+                health -= regEnemyDamage;
+                StartCoroutine(Invincible(5));
+            }
+
+            if (other.gameObject.tag == "HardEnemy")
+            {
+                health -= hardEnemyDamage;
+                StartCoroutine(Invincible(5));
+            }
+        }
+        
+        /*if (other.gameObject.tag == "RegularEnemy")
+        {
+            health += regEnemyDamage;
+        }
+
+        if (other.gameObject.tag == "HardEnemy")
+        {
+            health += hardEnemyDamage;
+        }*/
     }
 
     /// <summary>
@@ -77,13 +130,15 @@ public class PlayerController : MonoBehaviour
         }
     } 
 
-
-
-    /*private void FacingRight()
+    /// <summary>
+    /// makes the player unable to take damage for 5 seconds after getting hit
+    /// </summary>
+    /// <param name="secondsToWait"></param>
+    /// <returns></returns>
+    IEnumerator Invincible(float secondsToWait)
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-
-        }
-    }*/
+        invincible = true;
+        yield return new WaitForSeconds(secondsToWait);
+        invincible = false;
+    }
 }
