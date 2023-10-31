@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 /*
@@ -15,7 +16,9 @@ public class PlayerController : MonoBehaviour
 
     public float speed = 10f;
     public float jumpForce = 10f;
-    
+
+    public bool facingRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +35,9 @@ public class PlayerController : MonoBehaviour
         //if the player is pressing A
         if (Input.GetKey(KeyCode.A))
         {
-            PlayerRotation();
-
             //the player moves left
             transform.position += Vector3.left * speed * Time.deltaTime;
+
         }
         //if the player is pressing D
         if (Input.GetKey(KeyCode.D))
@@ -69,11 +71,13 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerRotation()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             transform.RotateAround(transform.position, transform.up, 180f);
         }
-    }
+    } 
+
+
 
     /*private void FacingRight()
     {
