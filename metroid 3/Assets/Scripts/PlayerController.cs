@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
 
     public bool invincible = false;
 
+    public GameObject laserPrefab;
+    public float spawnRate = 1f;
+    public bool shootLeft = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,8 +60,24 @@ public class PlayerController : MonoBehaviour
         {
             HandleJump();
         }
+        if (Input.GetKey(KeyCode.Return))
+        {
+            ShootLaser();
+            //InvokeRepeating("ShootLaser", 0, spawnRate);
+
+
+        }
 
         GameOver();
+    }
+
+
+
+
+    public void ShootLaser()
+    {
+        GameObject laserInstance = Instantiate(laserPrefab, transform.position, transform.rotation);
+        laserInstance.GetComponent<laser>().goingLeft = shootLeft;
     }
 
     /// <summary>
