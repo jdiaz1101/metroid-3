@@ -18,7 +18,7 @@ public class RegularEnemy : MonoBehaviour
     private bool movingRight = true;
 
     //variables for the enemy health
-    public int health = 1;
+    public float health, maxHealth = 1f;
 
     //variables for the pause before resuming patrol
     //might not be necessary, but I wanted to do it
@@ -29,6 +29,7 @@ public class RegularEnemy : MonoBehaviour
     {
         //this will store the current starting position of the enemy object
         startingX = transform.position.x;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -63,7 +64,7 @@ public class RegularEnemy : MonoBehaviour
             }
 
             //checks to see if the enemy should be dead or not
-            EnemyDeath();
+
         }
     }
 
@@ -76,6 +77,13 @@ public class RegularEnemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void TakeDamage(float damageAmount)
+    {
+        health -= damageAmount;
+        EnemyDeath();
+
     }
 
     /// <summary>

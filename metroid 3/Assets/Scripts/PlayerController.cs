@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public float spawnRate = 1f;
     public bool shootLeft = false;
 
+    [SerializeField] public float shootDelay = 1f;
+    public float ShootDelay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
 
         //stores the current position of the player object in the level
         startPos = transform.position;
+
+        ShootDelay = shootDelay;
     }
 
     // Update is called once per frame
@@ -62,17 +67,33 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Return))
         {
-            ShootLaser();
-            //InvokeRepeating("ShootLaser", 0, spawnRate);
-
+            ShootInput();
 
         }
+
+        if(ShootDelay < shootDelay)
+        {
+            ShootDelay += Time.deltaTime;
+        }
+
+
+
+
+
+
 
         GameOver();
     }
 
 
-
+    public void ShootInput()
+    {
+        if(ShootDelay >= shootDelay)
+        {
+            ShootDelay = 0;
+            ShootLaser();
+        }
+    }
 
     public void ShootLaser()
     {

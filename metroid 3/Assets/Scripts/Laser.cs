@@ -12,7 +12,7 @@ public class laser : MonoBehaviour
     private void Start()
     {
         //starts the coroutine when the object 
-        StartCoroutine(DespawnDelay());
+        //StartCoroutine(DespawnDelay());
     }
 
     // Update is called once per frame
@@ -31,6 +31,31 @@ public class laser : MonoBehaviour
 
     }
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        /*
+        if (collision.gameObject.TryGetComponent<RegularEnemy>(out RegularEnemy enemyComponent))
+        {
+            // do damage here, for example:
+            enemyComponent.TakeDamage(1);
+        }
+        */
+        if (other.CompareTag("Untagged"))
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
+
+    /*
     /// <summary>
     /// waits for 5 seconds, then destroys itself
     /// </summary>
@@ -40,5 +65,7 @@ public class laser : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(this.gameObject);
     }
+    */
+
 
 }
