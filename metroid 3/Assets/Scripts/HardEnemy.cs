@@ -20,6 +20,8 @@ public class HardEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //saves the object's starting position so it will stay there until it
+        //"sees" the player
         startingX = transform.position.x;
     }
 
@@ -30,6 +32,9 @@ public class HardEnemy : MonoBehaviour
         CheckForPlayer();
     }
 
+    /// <summary>
+    /// Checks to see where the player is standing and then follows it
+    /// </summary>
     private void CheckForPlayer()
     {
         RaycastHit hit;
@@ -51,6 +56,9 @@ public class HardEnemy : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Codes for the hard enemy's health and kills it when it runs out
+    /// </summary>
     private void EnemyHealth()
     {
         if (health <= 0)
@@ -58,5 +66,29 @@ public class HardEnemy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    //This is NOT for the hard enemy. This is for the PLAYER!!
+    //I'm coding this here so I don't cause a merge conflict in the player script
+
+    /// <summary>
+    /// Codes for the player blinking after taking damage
+    /// </summary>
+    /// <returns></returns>
+    /*public IEnumerator Blink()
+    {
+        for (int index = 0; index < 30; index++)
+        {
+            if (index % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(5);
+        }
+        GetComponent<MeshRenderer>().enabled = true;
+    }*/
 
 }

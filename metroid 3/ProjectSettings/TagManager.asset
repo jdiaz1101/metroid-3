@@ -8,6 +8,7 @@ TagManager:
   - Regular Enemy
   - RegularEnemy
   - HardEnemy
+  - Door
   layers:
   - Default
   - TransparentFX
