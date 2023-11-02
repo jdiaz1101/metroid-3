@@ -9,6 +9,7 @@ TagManager:
   - RegularEnemy
   - HardEnemy
   - samus
+  - Door
   layers:
   - Default
   - TransparentFX
