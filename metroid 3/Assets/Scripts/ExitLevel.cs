@@ -10,5 +10,6 @@ using UnityEngine;
 
 public class ExitLevel : MonoBehaviour
 {
+    //allows the spawn point into the next level to be set in the inspector window
     public GameObject doorPoint;
 }
