@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 /*
  * Author(s): [Strong, Hannah]
- * Date Last Modified: [10/31/2023]
+ * Date Last Modified: [11/02/2023]
  * Codes for player movement 
  */
 
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     public float jumpForce = 10f;
 
-    public bool facingRight;
+    public bool facingRight = true;
 
     public float health = 99f;
     public float regEnemyDamage = 15f;
@@ -53,13 +53,14 @@ public class PlayerController : MonoBehaviour
         {
             //the player moves left
             transform.position += Vector3.left * speed * Time.deltaTime;
-
+            facingRight = false;
         }
         //if the player is pressing D
         if (Input.GetKey(KeyCode.D))
         {
             //the player moves right
             transform.position += Vector3.right * speed * Time.deltaTime;
+            facingRight = true;
         }
         if (Input.GetKey(KeyCode.Space))
         {
@@ -76,10 +77,14 @@ public class PlayerController : MonoBehaviour
             ShootDelay += Time.deltaTime;
         }
 
+        /*if (facingRight == false)
+        {
+            transform.Rotate(Vector3.up * 180);
+            //transform.RotateAround(transform.position, transform.up, 180f);
+        }*/
 
 
-
-
+        //PlayerRotation();
 
 
         GameOver();
@@ -126,12 +131,14 @@ public class PlayerController : MonoBehaviour
             {
                 health -= regEnemyDamage;
                 StartCoroutine(Invincible(5));
+                StartCoroutine(Blink());
             }
 
             if (other.gameObject.tag == "HardEnemy")
             {
                 health -= hardEnemyDamage;
                 StartCoroutine(Invincible(5));
+                StartCoroutine(Blink());
             }
         }
         
@@ -164,13 +171,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayerRotation()
+    /*private void PlayerRotation()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             transform.RotateAround(transform.position, transform.up, 180f);
         }
-    }
+    }*/
 
 
 
@@ -184,5 +191,28 @@ public class PlayerController : MonoBehaviour
         invincible = true;
         yield return new WaitForSeconds(secondsToWait);
         invincible = false;
+    }
+
+    
+
+    /// <summary>
+    /// Codes for the player blinking after taking damage
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator Blink()
+    {
+        for (int index = 0; index < 30; index++)
+        {
+            if (index % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(.5f);
+        }
+        GetComponent<MeshRenderer>().enabled = true;
     }
 }

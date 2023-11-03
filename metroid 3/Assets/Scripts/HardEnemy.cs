@@ -66,29 +66,4 @@ public class HardEnemy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    //This is NOT for the hard enemy. This is for the PLAYER!!
-    //I'm coding this here so I don't cause a merge conflict in the player script
-
-    /// <summary>
-    /// Codes for the player blinking after taking damage
-    /// </summary>
-    /// <returns></returns>
-    /*public IEnumerator Blink()
-    {
-        for (int index = 0; index < 30; index++)
-        {
-            if (index % 2 == 0)
-            {
-                GetComponent<MeshRenderer>().enabled = false;
-            }
-            else
-            {
-                GetComponent<MeshRenderer>().enabled = true;
-            }
-            yield return new WaitForSeconds(5);
-        }
-        GetComponent<MeshRenderer>().enabled = true;
-    }*/
-
 }
