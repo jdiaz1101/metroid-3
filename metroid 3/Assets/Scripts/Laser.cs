@@ -36,19 +36,22 @@ public class laser : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.tag == "RegularEnemy")
         {
+            other.GetComponent<RegularEnemy>().TakeDamage(1);
             Debug.Log("touched enemy");
+            Destroy(this.gameObject);
         }
+        
+        if (other.tag == "wall")
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 
 
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
-    }
-    */
 
     /*
     private void OnTriggerEnter(Collider other)
