@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 741413932}
   m_Layer: 0
-  m_Name: DoorPoint
+  m_Name: doorPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1036,7 +1036,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1745600695}
   - {fileID: 1252668992}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1086,7 +1085,7 @@ MonoBehaviour:
   regEnemyDamage: 15
   hardEnemyDamage: 35
   invincible: 0
-  laserPrefab: {fileID: 0}
+  laserPrefab: {fileID: 3974259835053276399, guid: fa560160fef17d94faccf146ef708c85, type: 3}
   spawnRate: 1
   shootLeft: 0
   shootDelay: 1
@@ -1142,7 +1141,6 @@ MonoBehaviour:
   travelDistanceLeft: -7
   speed: 5
   health: 1
-  maxHealth: 1
   waiting: 0
 --- !u!65 &1587951902
 BoxCollider:
@@ -1567,6 +1565,7 @@ GameObject:
   - component: {fileID: 1745600695}
   - component: {fileID: 1745600694}
   - component: {fileID: 1745600693}
+  - component: {fileID: 1745600696}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1642,12 +1641,26 @@ Transform:
   m_GameObject: {fileID: 1745600692}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 2.6, z: -10}
+  m_LocalPosition: {x: -6.66, y: 4.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1406147040}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1745600696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745600692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c0a78499e8a254d89d3c9d58577136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1406147036}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1848943729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,6 +2010,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1007486385}
+  - {fileID: 1745600695}
   - {fileID: 1406147040}
   - {fileID: 1097757953}
   - {fileID: 535251191}
