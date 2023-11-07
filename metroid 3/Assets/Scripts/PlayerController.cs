@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject laserInstance = Instantiate(laserPrefab, transform.position, transform.rotation);
         laserInstance.GetComponent<laser>().goingLeft = shootLeft;
+        
     }
 
     /// <summary>
@@ -150,6 +151,13 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+        if (other.gameObject.tag == "HeavyBullet")
+        {
+            Debug.Log("picked up");
+            other.gameObject.SetActive(false);
+        }
+
+
         /*if (other.gameObject.tag == "RegularEnemy")
         {
             health += regEnemyDamage;
