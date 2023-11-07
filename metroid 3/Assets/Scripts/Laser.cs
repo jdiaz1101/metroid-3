@@ -18,7 +18,6 @@ public class laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //if the laser should move right, move it right, else move it left
         if (goingLeft)
         {

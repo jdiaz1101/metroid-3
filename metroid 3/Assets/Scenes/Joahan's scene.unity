@@ -258,7 +258,7 @@ Transform:
   m_GameObject: {fileID: 185609644}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.67, y: 1.693, z: 0}
+  m_LocalPosition: {x: -20.67, y: 1.452, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 3
-  facingRight: 0
+  facingRight: 1
   health: 99
   regEnemyDamage: 15
   hardEnemyDamage: 35
@@ -2516,7 +2516,7 @@ MonoBehaviour:
   travelDistanceRight: 5
   travelDistanceLeft: 0
   speed: 5
-  health: 3
+  health: 1
   waiting: 0
 --- !u!65 &1814127571
 BoxCollider:

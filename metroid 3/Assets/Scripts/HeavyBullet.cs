@@ -4,17 +4,50 @@ using UnityEngine;
 
 public class HeavyBullet : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public float speed;
+    public bool goingLeft;
+
+
+
+    private void Start()
     {
-        if (other.tag == "samus")
-        {
-            PickUp();
-        }
+        //starts the coroutine when the object 
+        //StartCoroutine(DespawnDelay());
     }
 
-    private void PickUp()
+    // Update is called once per frame
+    void Update()
     {
-        Debug.Log("picked up");
+        //if the laser should move right, move it right, else move it left
+        if (goingLeft)
+        {
+            transform.position += Vector3.left * speed * Time.deltaTime;
+        }
+        else
+        {
+            transform.position += Vector3.right * speed * Time.deltaTime;
+        }
+
+
+    }
+
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "RegularEnemy")
+        {
+            other.GetComponent<RegularEnemy>().TakeDamage(10);
+            Debug.Log("touched enemy");
+            Destroy(this.gameObject);
+        }
+
+        if (other.tag == "wall")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

@@ -151,11 +151,6 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        if (other.gameObject.tag == "HeavyBullet")
-        {
-            Debug.Log("picked up");
-            other.gameObject.SetActive(false);
-        }
 
 
         /*if (other.gameObject.tag == "RegularEnemy")
