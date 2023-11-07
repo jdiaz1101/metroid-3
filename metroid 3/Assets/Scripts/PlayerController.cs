@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public float spawnRate = 1f;
     public bool shootLeft = false;
 
-    [SerializeField] public float shootDelay = 1f;
+    public float shootDelay = 1f;
     public float ShootDelay;
 
     // Start is called before the first frame update

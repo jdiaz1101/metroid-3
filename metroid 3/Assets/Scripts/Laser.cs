@@ -32,28 +32,41 @@ public class laser : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
-    }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        /*
+        if (other.tag == "RegularEnemy")
+        {
+            Debug.Log("touched enemy");
+        }
+    }
+
+
+    /*
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
+    */
+
+    /*
+    private void OnTriggerEnter(Collider other)
+    {
+        
         if (collision.gameObject.TryGetComponent<RegularEnemy>(out RegularEnemy enemyComponent))
         {
             // do damage here, for example:
             enemyComponent.TakeDamage(1);
         }
-        */
+        
         if (other.CompareTag("Untagged"))
         {
             Destroy(this.gameObject);
         }
 
     }
-
+    */
 
     /*
     /// <summary>
