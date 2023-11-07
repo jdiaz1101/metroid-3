@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             //the player moves left
             transform.position += Vector3.left * speed * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
             facingRight = false;
         }
         //if the player is pressing D
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             //the player moves right
             transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
             facingRight = true;
         }
         if (Input.GetKey(KeyCode.Space))
@@ -140,6 +142,12 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Invincible(5));
                 StartCoroutine(Blink());
             }
+
+            if (other.gameObject.tag == "Door")
+            {
+                transform.position = other.gameObject.GetComponent<ExitLevel>().doorPoint.transform.position;
+                startPos = transform.position;
+            }
         }
         
         /*if (other.gameObject.tag == "RegularEnemy")
@@ -201,7 +209,7 @@ public class PlayerController : MonoBehaviour
     /// <returns></returns>
     public IEnumerator Blink()
     {
-        for (int index = 0; index < 30; index++)
+        for (int index = 0; index < 10; index++)
         {
             if (index % 2 == 0)
             {
