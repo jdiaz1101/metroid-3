@@ -11,6 +11,7 @@ TagManager:
   - samus
   - Door
   - wall
+  - HeavyBullet
   layers:
   - Default
   - TransparentFX
