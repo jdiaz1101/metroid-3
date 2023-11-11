@@ -12,6 +12,7 @@ TagManager:
   - Door
   - wall
   - HeavyBullet
+  - Heavy
   layers:
   - Default
   - TransparentFX

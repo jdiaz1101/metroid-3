@@ -16,16 +16,16 @@ public class laser : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         //if the laser should move right, move it right, else move it left
         if (goingLeft)
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            transform.position += speed * Vector3.left * Time.deltaTime;
         }
         else
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.position += speed * Vector3.right * Time.deltaTime;
         }
 
 

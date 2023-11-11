@@ -33,6 +33,14 @@ public class PlayerController : MonoBehaviour
     public float shootDelay = 1f;
     public float ShootDelay;
 
+    public GameObject HeavyBulletPrefab;
+    public GameObject samus;
+    public int bullet = 1;
+    public bool goingLeft;
+    public float lastShot;
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +56,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         //if the player is pressing A
         if (Input.GetKey(KeyCode.A))
         {
@@ -71,26 +81,53 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Return))
         {
             ShootInput();
-
         }
 
-        if(ShootDelay < shootDelay)
+        if (ShootDelay < shootDelay)
         {
             ShootDelay += Time.deltaTime;
         }
 
-        /*if (facingRight == false)
-        {
-            transform.Rotate(Vector3.up * 180);
-            //transform.RotateAround(transform.position, transform.up, 180f);
-        }*/
 
-
-        //PlayerRotation();
-
-
+        
         GameOver();
     }
+
+
+
+
+
+    public void Shoot()
+    {
+        if (bullet == 1)
+        {
+            if (samus.transform.rotation.y == 0f)
+            {
+                goingLeft = false;
+                lastShot = Time.time;
+                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+            }
+            else if (samus.transform.rotation.y != 0f)
+            {
+                goingLeft = true;
+                lastShot = Time.time;
+                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+            }
+        }
+        else if (samus.transform.rotation.y == 0f)
+        {
+            goingLeft = false;
+            lastShot = Time.time;
+            Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<HeavyBullet>().goingLeft = goingLeft;
+        }
+        else if (samus.transform.rotation.y != 0f)
+        {
+            goingLeft = true;
+            lastShot = Time.time;
+            Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<HeavyBullet>().goingLeft = goingLeft;
+        }
+    }
+
 
 
     public void ShootInput()
@@ -98,16 +135,19 @@ public class PlayerController : MonoBehaviour
         if(ShootDelay >= shootDelay)
         {
             ShootDelay = 0;
-            ShootLaser();
+            Shoot();
         }
     }
 
+
+    /*
     public void ShootLaser()
     {
         GameObject laserInstance = Instantiate(laserPrefab, transform.position, transform.rotation);
         laserInstance.GetComponent<laser>().goingLeft = shootLeft;
         
     }
+    */
 
     /// <summary>
     /// codes for the scene transition when the player is out of health
@@ -151,7 +191,11 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-
+        if (other.tag == "Heavy")
+        {
+            bullet++;
+            Debug.Log("picked up");
+        }
 
         /*if (other.gameObject.tag == "RegularEnemy")
         {
