@@ -39,7 +39,7 @@ public class HeavyBullet : MonoBehaviour
 
         if (other.tag == "RegularEnemy")
         {
-            other.GetComponent<RegularEnemy>().TakeDamage(10);
+            //other.GetComponent<RegularEnemy>().TakeDamage(10);
             Debug.Log("touched enemy");
             Destroy(this.gameObject);
         }

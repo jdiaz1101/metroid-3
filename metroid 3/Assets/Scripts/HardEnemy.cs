@@ -41,14 +41,14 @@ public class HardEnemy : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Vector3.left, out hit, 10))
         {
-            if (hit.collider.tag == "Player")
+            if (hit.collider.tag == "samus")
             {
                 transform.position += Vector3.left * speed * Time.deltaTime;
             }
         }
         if (Physics.Raycast(transform.position, Vector3.right, out hit, 10))
         {
-            if (hit.collider.tag == "Player")
+            if (hit.collider.tag == "samus")
             {
                 transform.position += Vector3.right * speed * Time.deltaTime;
             }
@@ -66,4 +66,17 @@ public class HardEnemy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "laser")
+        {
+            health--;
+        }
+        if (other.tag == "HeavyBullet")
+        {
+            health -= 3;
+        }
+    }
+
 }

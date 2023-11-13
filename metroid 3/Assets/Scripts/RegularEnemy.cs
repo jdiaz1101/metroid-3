@@ -66,6 +66,7 @@ public class RegularEnemy : MonoBehaviour
             //checks to see if the enemy should be dead or not
             
         }
+        EnemyDeath();
     }
 
     /// <summary>
@@ -79,12 +80,29 @@ public class RegularEnemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "laser")
+        {
+            health--;
+        }
+        if (other.tag == "HeavyBullet")
+        {
+            health -= 3;
+        }
+    }
+
+
+
+    /*
     public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
         EnemyDeath();
 
     }
+    */
+
 
     /// <summary>
     /// makes the enemy pause at the far left and right of it's patrol

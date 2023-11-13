@@ -39,8 +39,14 @@ public class laser : MonoBehaviour
 
         if (other.tag == "RegularEnemy")
         {
-            other.GetComponent<RegularEnemy>().TakeDamage(1);
+            //other.GetComponent<RegularEnemy>().TakeDamage(1);
             Debug.Log("touched enemy");
+            Destroy(this.gameObject);
+        }
+
+
+        if (other.tag == "HardEnemy")
+        {
             Destroy(this.gameObject);
         }
         
@@ -52,24 +58,6 @@ public class laser : MonoBehaviour
     }
 
 
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        if (collision.gameObject.TryGetComponent<RegularEnemy>(out RegularEnemy enemyComponent))
-        {
-            // do damage here, for example:
-            enemyComponent.TakeDamage(1);
-        }
-        
-        if (other.CompareTag("Untagged"))
-        {
-            Destroy(this.gameObject);
-        }
-
-    }
-    */
 
     /*
     /// <summary>

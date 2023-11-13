@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidbodyRef;
     private Vector3 startPos;
 
-    public float speed = 10f;
+    public float speed = 1f;
     public float jumpForce = 10f;
 
     public bool facingRight = true;
@@ -35,10 +35,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject HeavyBulletPrefab;
     public GameObject samus;
-    public int bullet = 1;
-    public bool goingLeft;
-    public float lastShot;
-    
+    public int bullet = 0;
+    public bool goingLeft;    
 
 
     // Start is called before the first frame update
@@ -54,7 +52,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         
 
@@ -83,6 +81,7 @@ public class PlayerController : MonoBehaviour
             ShootInput();
         }
 
+
         if (ShootDelay < shootDelay)
         {
             ShootDelay += Time.deltaTime;
@@ -103,29 +102,34 @@ public class PlayerController : MonoBehaviour
         {
             if (samus.transform.rotation.y == 0f)
             {
-                goingLeft = false;
-                lastShot = Time.time;
+                //goingLeft = false;
+                GameObject laserInstance = Instantiate(laserPrefab, transform.position, transform.rotation);
+                laserInstance.GetComponent<laser>();
+                //Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+            }
+            else
+            {
+                goingLeft = true;
+                //GameObject laserInstance = Instantiate(laserPrefab, transform.position, transform.rotation);
+                //laserInstance.GetComponent<laser>().goingLeft = shootLeft;
                 Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+            }
+        }
+
+        if (bullet == 3)
+        {
+            if (samus.transform.rotation.y == 0f)
+            {
+                goingLeft = false;
+                Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<HeavyBullet>().goingLeft = goingLeft;
             }
             else if (samus.transform.rotation.y != 0f)
             {
                 goingLeft = true;
-                lastShot = Time.time;
-                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<HeavyBullet>().goingLeft = goingLeft;
             }
         }
-        else if (samus.transform.rotation.y == 0f)
-        {
-            goingLeft = false;
-            lastShot = Time.time;
-            Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<HeavyBullet>().goingLeft = goingLeft;
-        }
-        else if (samus.transform.rotation.y != 0f)
-        {
-            goingLeft = true;
-            lastShot = Time.time;
-            Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<HeavyBullet>().goingLeft = goingLeft;
-        }
+
     }
 
 
@@ -194,7 +198,15 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Heavy")
         {
             bullet++;
-            Debug.Log("picked up");
+            Debug.Log("picked up heavy bullet");
+            Destroy(other.gameObject);
+        }
+
+        if (other.tag == "JetPack")
+        {
+            jumpForce += 0.3f;
+            Debug.Log("picked up jetpack");
+            Destroy(other.gameObject);
         }
 
         /*if (other.gameObject.tag == "RegularEnemy")

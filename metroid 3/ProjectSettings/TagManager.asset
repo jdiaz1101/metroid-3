@@ -13,6 +13,7 @@ TagManager:
   - wall
   - HeavyBullet
   - Heavy
+  - JetPack
   layers:
   - Default
   - TransparentFX
