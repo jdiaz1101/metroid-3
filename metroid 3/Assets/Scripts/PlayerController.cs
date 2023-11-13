@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviour
     public GameObject HeavyBulletPrefab;
     public GameObject samus;
     public int bullet = 0;
-    public bool goingLeft;    
+    public bool goingLeft;
+
+    public bool heavyBullets = false;
 
 
     // Start is called before the first frame update
@@ -200,6 +202,7 @@ public class PlayerController : MonoBehaviour
             bullet++;
             Debug.Log("picked up heavy bullet");
             Destroy(other.gameObject);
+            heavyBullets = true;
         }
 
         if (other.tag == "JetPack")
@@ -207,6 +210,18 @@ public class PlayerController : MonoBehaviour
             jumpForce += 0.3f;
             Debug.Log("picked up jetpack");
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "ExtraHealth")
+        {
+            health = 99f;
+            health += 100f;
+        }
+
+        if (other.gameObject.tag == "HealthPack")
+        {
+            health = 99f;
+            health += 5f;
         }
 
         /*if (other.gameObject.tag == "RegularEnemy")

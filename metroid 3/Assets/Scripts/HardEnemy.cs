@@ -15,7 +15,7 @@ public class HardEnemy : MonoBehaviour
 
     public int health = 10;
 
-    public bool moveLeft = true;
+    //public bool moveLeft = true;
     
     // Start is called before the first frame update
     void Start()
