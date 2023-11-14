@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Strong, Hannah], [Diaz, Joahan]
+ * Date Last Modified: [11/13/2023]
+ * Code for the player tracking camera
+ */
+
+
+
 public class Camera : MonoBehaviour
 {
 

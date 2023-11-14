@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Author(s): [Strong, Hannah]
- * Date Last Modified: [11/02/2023]
+ * Authors: [Strong, Hannah], [Diaz, Joahan]
+ * Date Last Modified: [11/13/2023]
  * Codes for the hard enemy
  */
 

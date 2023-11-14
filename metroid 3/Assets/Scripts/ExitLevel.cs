@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Author(s): [Strong, Hannah]
+ * Authors: [Strong, Hannah], [Diaz, Joahan]
  * Date Last Modified: [11/02/2023]
  * codes for transitioning from one level to another (codes for doors)
  */

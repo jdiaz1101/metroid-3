@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Authors: [Strong, Hannah], [Diaz, Joahan]
+ * Date Last Modified: [11/13/2023]
+ * Code for the regular and heavy bullet
+ */
+
+
 public class laser : MonoBehaviour
 {
     public float speed;
@@ -56,19 +63,6 @@ public class laser : MonoBehaviour
         
     }
 
-
-
-    /*
-    /// <summary>
-    /// waits for 5 seconds, then destroys itself
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator DespawnDelay()
-    {
-        yield return new WaitForSeconds(2);
-        Destroy(this.gameObject);
-    }
-    */
 
 
 }

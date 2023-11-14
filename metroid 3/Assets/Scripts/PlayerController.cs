@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /*
- * Author(s): [Strong, Hannah]; [Diaz, Joahan]
+ * Authors: [Strong, Hannah], [Diaz, Joahan]
  * Date Last Modified: [11/13/2023]
  * Codes for player movement 
  */
@@ -144,73 +144,6 @@ public class PlayerController : MonoBehaviour
 
 
 
-
-    /// <summary>
-    /// codes for player shooting
-    /// </summary>
-    public void Shoot()
-    {
-        if (bullet == 1)
-        {
-            if (samus.transform.rotation.y == 0f)
-            {
-                goingLeft = false;
-                //shootLeft = false;
-                //GameObject laserInstance = Instantiate(laserPrefab, samus.transform.position, samus.transform.rotation);
-                //laserInstance.GetComponent<laser>().goingLeft = shootLeft;
-                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
-            }
-            else if (samus.transform.rotation.y != 0f)
-            {
-                goingLeft = true;
-                //shootLeft = true;
-                //GameObject laserInstance = Instantiate(laserPrefab, samus.transform.position, samus.transform.rotation);
-                //laserInstance.GetComponent<laser>().goingLeft = shootLeft;
-                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
-            }
-        }
-
-        if (bullet == 2)
-        {
-            if (samus.transform.rotation.y == 0f)
-            {
-                goingLeft = false;
-                //GameObject HeavyBulletInstance = Instantiate(HeavyBulletPrefab, samus.transform.position, samus.transform.rotation);
-                //HeavyBulletInstance.GetComponent<laser>();
-                Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
-            }
-            else if (samus.transform.rotation.y != 0f)
-            {
-                goingLeft = true;
-                //GameObject HeavyBulletInstance = Instantiate(HeavyBulletPrefab, samus.transform.position, samus.transform.rotation);
-                //HeavyBulletInstance.GetComponent<laser>().goingLeft = shootLeft;
-                Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
-            }
-        }
-
-    }
-
-
-
-    public void ShootInput()
-    {
-        if(ShootDelay >= shootDelay)
-        {
-            ShootDelay = 0;
-            Shoot();
-        }
-    }
-
-
-    /*
-    public void ShootLaser()
-    {
-        GameObject laserInstance = Instantiate(laserPrefab, transform.position, transform.rotation);
-        laserInstance.GetComponent<laser>().goingLeft = shootLeft;
-        
-    }
-    */
-
     /// <summary>
     /// codes for the scene transition when the player is out of health
     /// </summary>
@@ -290,32 +223,9 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
-        /*if (other.gameObject.tag == "RegularEnemy")
-        {
-            health += regEnemyDamage;
-        }
-
-        if (other.gameObject.tag == "HardEnemy")
-        {
-            health += hardEnemyDamage;
-        }*/
     }
 
-    /// <summary>
-    /// codes for the gate to the final room
-    /// </summary>
-    /// <param name="collision"></param>
-    /*public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "FinalRoomDoor")
-        {
-            Door collidedDoor = collision.gameObject.GetComponent<Door>();
-            if (heavyBulletsCollected == collidedDoor.heavyBulletsNeeded && jetPacksCollected == collidedDoor.jetPacksNeeded)
-            {
-                collision.gameObject.SetActive(false);
-            }
-        }
-    }*/
+
 
     /// <summary>
     /// lets the player jump only if they are on the ground and adds physics to jumping
@@ -334,14 +244,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("The player is in the air and may not jump.");
         }
     }
-
-    /*private void PlayerRotation()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            transform.RotateAround(transform.position, transform.up, 180f);
-        }
-    }*/
 
 
 

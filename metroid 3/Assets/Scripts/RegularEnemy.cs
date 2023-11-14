@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Author: [Strong, Hannah]
- * Date Last Modified: [10/30/2023]
- * codes for the regular enemy movement, health and pauses in patrol
+ * Author: [Strong, Hannah], [Diaz, Joahan]
+ * Date Last Modified: [11/13/2023]
+ * Codes for the regular enemy movement, health and pauses in patrol
  */
 
 public class RegularEnemy : MonoBehaviour
@@ -91,17 +91,6 @@ public class RegularEnemy : MonoBehaviour
             health -= 3;
         }
     }
-
-
-
-    /*
-    public void TakeDamage(float damageAmount)
-    {
-        health -= damageAmount;
-        EnemyDeath();
-
-    }
-    */
 
 
     /// <summary>

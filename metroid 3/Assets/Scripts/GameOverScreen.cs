@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /*
- * Author(s): [Strong, Hannah]
- * Date Last Modified: [10/31/2023]
+ * Authors: [Strong, Hannah], [Diaz, Joahan]
+ * Date Last Modified: [11/13/2023]
  * codes for the game over screen buttons
  */
 
