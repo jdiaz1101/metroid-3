@@ -8,7 +8,6 @@ public class laser : MonoBehaviour
     public bool goingLeft;
 
 
-
     private void Start()
     {
         //starts the coroutine when the object 

@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     public GameObject samus;
     public int bullet = 0;
     public bool goingLeft;
+    public bool goingRight;
 
 
 
@@ -77,9 +78,36 @@ public class PlayerController : MonoBehaviour
         {
             HandleJump();
         }
-        if (Input.GetKey(KeyCode.Return))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            ShootInput();
+            //ShootInput();
+            goingLeft = false;
+
+            if (ShootDelay >= shootDelay)
+            {
+                ShootDelay = 0;
+                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                if (bullet == 2)
+                {
+                    Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            //ShootInput();
+            goingLeft = true;
+
+            if (ShootDelay >= shootDelay)
+            {
+                ShootDelay = 0;
+                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                if (bullet == 2)
+                {
+                    Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                }
+            }
         }
 
 
@@ -106,16 +134,18 @@ public class PlayerController : MonoBehaviour
             if (samus.transform.rotation.y == 0f)
             {
                 goingLeft = false;
-                GameObject laserInstance = Instantiate(laserPrefab, samus.transform.position, samus.transform.rotation);
-                laserInstance.GetComponent<laser>().goingLeft = shootLeft;
-                //Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                //shootLeft = false;
+                //GameObject laserInstance = Instantiate(laserPrefab, samus.transform.position, samus.transform.rotation);
+                //laserInstance.GetComponent<laser>().goingLeft = shootLeft;
+                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
             }
             else if (samus.transform.rotation.y != 0f)
             {
                 goingLeft = true;
-                GameObject laserInstance = Instantiate(laserPrefab, samus.transform.position, samus.transform.rotation);
-                laserInstance.GetComponent<laser>().goingLeft = shootLeft;
-                //Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                //shootLeft = true;
+                //GameObject laserInstance = Instantiate(laserPrefab, samus.transform.position, samus.transform.rotation);
+                //laserInstance.GetComponent<laser>().goingLeft = shootLeft;
+                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
             }
         }
 
@@ -123,10 +153,10 @@ public class PlayerController : MonoBehaviour
         {
             if (samus.transform.rotation.y == 0f)
             {
-                //goingLeft = false;
-                GameObject HeavyBulletInstance = Instantiate(HeavyBulletPrefab, samus.transform.position, samus.transform.rotation);
-                HeavyBulletInstance.GetComponent<laser>();
-                //Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                goingLeft = false;
+                //GameObject HeavyBulletInstance = Instantiate(HeavyBulletPrefab, samus.transform.position, samus.transform.rotation);
+                //HeavyBulletInstance.GetComponent<laser>();
+                Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
             }
             else if (samus.transform.rotation.y != 0f)
             {
