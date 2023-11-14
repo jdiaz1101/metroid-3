@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour
     /// codes for the gate to the final room
     /// </summary>
     /// <param name="collision"></param>
-    public void OnCollisionEnter(Collision collision)
+    /*public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "FinalRoomDoor")
         {
@@ -290,7 +290,7 @@ public class PlayerController : MonoBehaviour
                 collision.gameObject.SetActive(false);
             }
         }
-    }
+    }*/
 
     /// <summary>
     /// lets the player jump only if they are on the ground and adds physics to jumping
