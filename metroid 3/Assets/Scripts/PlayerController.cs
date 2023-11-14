@@ -84,15 +84,26 @@ public class PlayerController : MonoBehaviour
             //ShootInput();
             goingLeft = false;
 
-            if (ShootDelay >= shootDelay)
+            if (bullet == 1)
             {
-                ShootDelay = 0;
-                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
-                if (bullet == 2)
+                if (ShootDelay >= shootDelay)
                 {
-                    Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                    ShootDelay = 0;
+                    Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
                 }
             }
+
+            if (bullet == 2)
+            {
+                if (ShootDelay >= shootDelay)
+                {
+                    ShootDelay = 0;
+                    Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                }
+
+            }
+
+
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -100,12 +111,21 @@ public class PlayerController : MonoBehaviour
             //ShootInput();
             goingLeft = true;
 
-            if (ShootDelay >= shootDelay)
+
+            if (bullet == 1)
             {
-                ShootDelay = 0;
-                Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
-                if (bullet == 2)
+                if (ShootDelay >= shootDelay)
                 {
+                    ShootDelay = 0;
+                    Object.Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
+                }
+            }
+
+            if (bullet == 2)
+            {
+                if (ShootDelay >= shootDelay)
+                {
+                    ShootDelay = 0;
                     Object.Instantiate(HeavyBulletPrefab, transform.position, HeavyBulletPrefab.transform.rotation).GetComponent<laser>().goingLeft = goingLeft;
                 }
             }
@@ -263,6 +283,11 @@ public class PlayerController : MonoBehaviour
         {
             health = 99f;
             health += 5f;
+        }
+
+        if (other.gameObject.tag == "LastPortal")
+        {
+            SceneManager.LoadScene(2);
         }
 
         /*if (other.gameObject.tag == "RegularEnemy")

@@ -17,6 +17,7 @@ TagManager:
   - ExtraHealth
   - HealthPack
   - FinalRoomDoor
+  - LastPortal
   layers:
   - Default
   - TransparentFX

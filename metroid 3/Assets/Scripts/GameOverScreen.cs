@@ -14,9 +14,9 @@ public class GameOverScreen : MonoBehaviour
     /// <summary>
     /// Lets the player retry the game
     /// </summary>
-    public void RetryGame()
+    public void SwitchScene(int sceneIndex)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(sceneIndex);
     }
 
     /// <summary>
