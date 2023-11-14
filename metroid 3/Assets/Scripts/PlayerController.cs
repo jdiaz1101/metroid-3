@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "JetPack")
         {
-            jumpForce += 0.3f;
+            jumpForce += 0.4f;
             Debug.Log("picked up jetpack");
             Destroy(other.gameObject);
         }
