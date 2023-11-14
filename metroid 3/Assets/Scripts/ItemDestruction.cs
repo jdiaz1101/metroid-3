@@ -12,18 +12,10 @@ using UnityEngine;
 
 public class ItemDestruction : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// destroys game objects that it is attached to after the player touches it
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "samus")

@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /*
- * Author(s): [Strong, Hannah]
- * Date Last Modified: [11/02/2023]
+ * Author(s): [Strong, Hannah]; [Diaz, Joahan]
+ * Date Last Modified: [11/13/2023]
  * Codes for player movement 
  */
 
@@ -96,7 +96,9 @@ public class PlayerController : MonoBehaviour
 
 
 
-
+    /// <summary>
+    /// codes for player shooting
+    /// </summary>
     public void Shoot()
     {
         if (bullet == 1)
