@@ -16,6 +16,7 @@ TagManager:
   - JetPack
   - ExtraHealth
   - HealthPack
+  - FinalRoomDoor
   layers:
   - Default
   - TransparentFX

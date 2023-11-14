@@ -39,7 +39,8 @@ public class PlayerController : MonoBehaviour
     public bool goingLeft;
     public bool goingRight;
 
-
+    public int heavyBulletsCollected = 0;
+    public int jetPacksCollected = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -240,6 +241,7 @@ public class PlayerController : MonoBehaviour
         {
             bullet++;
             Debug.Log("picked up heavy bullet");
+            heavyBulletsCollected++;
             Destroy(other.gameObject);
         }
 
@@ -247,6 +249,7 @@ public class PlayerController : MonoBehaviour
         {
             jumpForce += 0.4f;
             Debug.Log("picked up jetpack");
+            jetPacksCollected++;
             Destroy(other.gameObject);
         }
 
@@ -271,6 +274,22 @@ public class PlayerController : MonoBehaviour
         {
             health += hardEnemyDamage;
         }*/
+    }
+
+    /// <summary>
+    /// codes for the gate to the final room
+    /// </summary>
+    /// <param name="collision"></param>
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "FinalRoomDoor")
+        {
+            Door collidedDoor = collision.gameObject.GetComponent<Door>();
+            if (heavyBulletsCollected == collidedDoor.heavyBulletsNeeded && jetPacksCollected == collidedDoor.jetPacksNeeded)
+            {
+                collision.gameObject.SetActive(false);
+            }
+        }
     }
 
     /// <summary>
